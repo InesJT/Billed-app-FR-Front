@@ -20,6 +20,28 @@ export default class NewBill {
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
+
+    const extension = fileName.split('.').pop();
+    console.log('extension', extension);
+
+    // Tableau des extensions autorisées
+    const allowedExtensions = ['jpg', 'jpeg', 'png'];
+
+    
+    // Vérifier si l'extension n'est pas autorisée
+    if (!allowedExtensions.includes(extension.toLowerCase())) {
+      
+      // Désactiver le bouton de soumission du formulaire
+      const submitButton = this.document.querySelector(`button[type="submit"]`);
+      submitButton.disabled = true;
+      alert(
+        "Seuls les formats suivants : 'jpg, jpeg et png' sont autorisés pour les fichiers du justificatif "
+      );
+      return;
+    }
+    // Si l'extension est valide, réactiver le bouton de soumission s'il était désactivé
+    submitButton.disabled = false;
+
     const formData = new FormData()
     const email = JSON.parse(localStorage.getItem("user")).email
     formData.append('file', file)
