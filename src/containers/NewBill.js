@@ -35,7 +35,7 @@ export default class NewBill {
       const submitButton = this.document.querySelector(`button[type="submit"]`);
       submitButton.disabled = true;
       alert(
-        "Seuls les formats suivants : 'jpg, jpeg et png' sont autorisés pour les fichiers du justificatif "
+        "Seuls les formats suivants : 'jpg, jpeg et png' sont autorisés pour les fichiers du justificatif"
       );
       return;
     }
