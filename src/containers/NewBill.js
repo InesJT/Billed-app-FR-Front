@@ -27,12 +27,11 @@ export default class NewBill {
     // Tableau des extensions autorisées
     const allowedExtensions = ['jpg', 'jpeg', 'png'];
 
+    const submitButton = this.document.querySelector(`button[type="submit"]`);
     
     // Vérifier si l'extension n'est pas autorisée
-    if (!allowedExtensions.includes(extension.toLowerCase())) {
-      
+    if (!allowedExtensions.includes(extension.toLowerCase())) {      
       // Désactiver le bouton de soumission du formulaire
-      const submitButton = this.document.querySelector(`button[type="submit"]`);
       submitButton.disabled = true;
       alert(
         "Seuls les formats suivants : 'jpg, jpeg et png' sont autorisés pour les fichiers du justificatif"
